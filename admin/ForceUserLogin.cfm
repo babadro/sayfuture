@@ -7,7 +7,7 @@
 		
 		
 		<cfif user.getUserLogin>
-			<cfloginuser name="#user.getUserLogin#" password="#FORM.userPassword#" roles="#user.getUser_status#">
+			<cfloginuser name="#user.getLogin#" password="#FORM.userPassword#" roles="#user.getUser_status#">
 		<cfelse>
 			Password and username are not recognized. Try again.
 			<cfinclude template="UserLoginForm.cfm">
