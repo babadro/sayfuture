@@ -6,8 +6,8 @@
 		<cfset user = entityLoad("users", {login=FORM.userLogin, pass=hash(FORM.userPassword, "SHA-512")})>
 		
 		
-		<cfif user.getUserLogin>
-			<cfloginuser name="#user.getLogin#" password="#FORM.userPassword#" roles="#user.getUser_status#">
+		<cfif ArrayLen(user) eq 1>
+			<cfloginuser name="#user[1].getLogin#" password="#FORM.userPassword#" roles="#user[1].getUser_status#">
 		<cfelse>
 			Password and username are not recognized. Try again.
 			<cfinclude template="UserLoginForm.cfm">
