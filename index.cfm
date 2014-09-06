@@ -9,7 +9,7 @@
 	<cfmenuitem display="Авторизация" href="admin/index.cfm"/>
 </cfmenu>
 
-<cfoutput>#hash("astachov", "SHA-512")#</cfoutput>
+<cfoutput>#hash("Venediktov", "SHA-512")#</cfoutput>
 
 <body>
 <html>
