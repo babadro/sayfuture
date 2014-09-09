@@ -12,7 +12,7 @@
 	<cfproperty name="displayName" column="display_name" ormtype="string">
 	
 	<cfproperty name="userPolls" fieldType="one-to-many" cfc="polls" fkcolumn="author" inverse="true">
-	
+	<cfproperty name="userBids" fieldType="one-to-many" cfc="bids" fkcolumn="user_id" inverse="true">
 	
 	
 	<!---

@@ -16,6 +16,6 @@
 	
 	
 	<cfproperty name="pollAuthor" fieldtype="many-to-one" cfc="users" fkcolumn="author">
-	
+	<cfproperty name="pollVariants" fieldType="one-to-many" cfc="variants" fkcolumn="poll_id" inverse="true">
 	
 </cfcomponent>
