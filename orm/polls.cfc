@@ -1,21 +1,21 @@
 <cfcomponent persistent="true" table="poll">
 
-    <cfproperty name="poll_id" column="id" fieldType="id" generator="increment" ormtype="int">
-    <cfproperty name="date" column="poll_date" ormtype="char">
-    <cfproperty name="date_gmt" column="poll_date_gmt" ormtype="char">
-    <cfproperty name="pollTitle" column="title" ormtype="string">
-    <cfproperty name="pollConditions" column="conditions" ormtype="text">
-    <cfproperty name="PollHashTag" column="hash_tag" ormtype="string">
-    <cfproperty name="pollStatus" column="poll_status" ormtype="string">
+    <cfproperty name="id" column="poll_id" fieldType="id" generator="increment" ormtype="int">
+    <cfproperty name="date" column="pdate" sqltype="char(19)">
+    <cfproperty name="dateGmt" column="pdate_gmt"  sqltype="char(19)">
+    <cfproperty name="title" column="title" ormtype="string">
+    <cfproperty name="conditions" column="conditions" ormtype="text">
+    <cfproperty name="HashTag" column="hash_tag" ormtype="string">
+    <cfproperty name="status" column="pstatus" ormtype="string">
     <cfproperty name="commentStatus" column="comment_status" ormtype="string">
-    <cfproperty name="PollDeadline" column="deadline" ormtype="char">
-	<cfproperty name="pollModified" column="modified" ormtype="char">
-	<cfproperty name="pollModifiedGmt" column="modified_gmt" ormtype="char">
+    <cfproperty name="deadline" column="deadline"  sqltype="char(19)">
+	<cfproperty name="modified" column="modified"  sqltype="char(19)">
+	<cfproperty name="ModifiedGmt" column="modified_gmt"  sqltype="char(19)">
 	<cfproperty name="pollParent" column="poll_parent" ormtype="int" >
 	<cfproperty name="postParent" column="post_parent" ormtype="int" >
 	
 	
-	<cfproperty name="pollAuthor" fieldtype="many-to-one" cfc="users" fkcolumn="author">
-	<cfproperty name="pollVariants" fieldType="one-to-many" cfc="variants" fkcolumn="poll_id" inverse="true">
+	<cfproperty name="Author" fieldtype="many-to-one" cfc="users" fkcolumn="author">
+	<cfproperty name="Variants" fieldType="one-to-many" cfc="variants" fkcolumn="poll_id" inverse="true">
 	
 </cfcomponent>

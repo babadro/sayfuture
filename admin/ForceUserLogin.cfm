@@ -3,11 +3,11 @@
 		<cfinclude template="UserLoginForm.cfm">
 		<cfabort>
 	<cfelse>
-		<cfset user = entityLoad("users", {userLogin=FORM.userLogin, userPass=hash(FORM.userPassword, "SHA-512")})>
+		<cfset user = entityLoad("users", {Login=FORM.userLogin, Pass=hash(FORM.userPassword, "SHA-512")})>
 		
 		
 		<cfif ArrayLen(user) eq 1>
-			<cfloginuser name="#user[1].getUserLogin#" password="#FORM.userPassword#" roles="#user[1].getUserStatus#">
+			<cfloginuser name="#user[1].getLogin#" password="#FORM.userPassword#" roles="#user[1].getStatus#">
 		<cfelse>
 			Password and username are not recognized. Try again.
 			<cfinclude template="UserLoginForm.cfm">

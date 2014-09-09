@@ -1,13 +1,13 @@
 <cfcomponent persistent="true" table="users">
 
     <cfproperty name="id" column="user_id" fieldType="id" generator="increment">
-    <cfproperty name="userLogin" column="login" ormtype="string">
-    <cfproperty name="userPass" column="pass" ormtype="string">
-    <cfproperty name="userNick" column="nick" ormtype="string">
-    <cfproperty name="userEmail" column="email" ormtype="string">
-    <cfproperty name="userRegistered" column="registered" ormtype="char">
-    <cfproperty name="userStatus" column="user_status" ormtype="int">
-    <cfproperty name="userRating"column="rating" ormtype="int">
+    <cfproperty name="Login" column="login" ormtype="string">
+    <cfproperty name="Pass" column="pass" ormtype="string">
+    <cfproperty name="Nick" column="nick" ormtype="string">
+    <cfproperty name="Email" column="email" ormtype="string">
+    <cfproperty name="Registered" column="registered"  sqltype="char(19)">
+    <cfproperty name="Status" column="uStatus" ormtype="int">
+    <cfproperty name="Rating"column="rating" ormtype="int">
     <cfproperty name="activationKey" column="activation_key" ormtype="string">
 	<cfproperty name="displayName" column="display_name" ormtype="string">
 	
