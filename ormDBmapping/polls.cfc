@@ -1,6 +1,7 @@
 <cfcomponent persistent="true" table="poll">
 
-    <cfproperty name="poll_id" column="id" >
+    <cfproperty name="poll_id" column="id" fieldtype="id" generator="increment" >
+
     <cfproperty name="date" column="poll_date">
     <cfproperty name="date_gmt" column="poll_date_gmt">
     <cfproperty name="pollTitle" column="title">
