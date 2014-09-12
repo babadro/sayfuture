@@ -17,7 +17,6 @@
     <cfproperty name="Modified" column="modified"  sqltype="char(19)">
 	<cfproperty name="ModifiedGmt" column="modified_gmt"  sqltype="char(19)">
 	<cfproperty name="contentFiltered" column="content_filtered" ormtype="text" >
-	
 	<cfproperty name="guid" column="guid" ormtype="string" >
 	<cfproperty name="menuOrder" column="menu_order" ormtype="int">
 	<cfproperty name="Type" column="ptype" ormtype="string" >
@@ -25,11 +24,13 @@
 	<cfproperty name="commentCount" column="comment_count" ormtype="int" >
 	
 	
-	<cfproperty name="Author" fieldtype="many-to-one" cfc="users" fkcolumn="author">
-	<cfproperty name="Variants" fieldType="one-to-many" cfc="variants" fkcolumn="poll_id" inverse="true">
+	<cfproperty name="Author" fieldtype="many-to-one" cfc="site_user" fkcolumn="author">
+	<cfproperty name="parentPoll" fieldtype="many-to-one" cfc="poll" fkcolumn="parent_poll">
+	<cfproperty name="parentPost" fieldtype="many-to-one" cfc="post" fkcolumn="parent_post">
 	
-	<cfproperty name="postParent" fieldtype="many-to-one" cfc="posts" fkcolumn="post_id">
-	<cfproperty name="postChilds" fieldtype="one-to-many" cfc="posts" fkcolumn="post_id" inverse="true" >
-	<cfproperty name="pollParent" fieldtype="many-to-one" cfc= fkcolumn="poll_parent" >
+	<cfproperty name="childPosts" fieldtype="one-to-many" cfc="post" fkcolumn="parent_post" inverse="true" >
+	
+	<cfproperty name="comments" fieldtype="one-to-many" cfc="comment" fkcolumn="post_id" inverse="true">
+	
 	
 </cfcomponent>

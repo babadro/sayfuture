@@ -6,8 +6,8 @@
     <cfproperty name="date" column="bdate"  sqltype="char(19)">
     <cfproperty name="dateGMT" column="bdate_gmt" sqltype="char(19)">
 	
-	<cfproperty name="variant_id" fieldtype="many-to-one" cfc="variants" fkcolumn="variant_id">
-	<cfproperty name="user_id" fieldtype="many-to-one" cfc="users" fkcolumn="user_id">
+	<cfproperty name="variant_id" fieldtype="many-to-one" cfc="variant" fkcolumn="variant_id">
+	<cfproperty name="user_id" fieldtype="many-to-one" cfc="site_user" fkcolumn="user_id">
 	
 	
 	
