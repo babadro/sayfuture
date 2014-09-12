@@ -9,5 +9,5 @@
 	
 	<cfproperty name="poll_id" fieldtype="many-to-one" cfc="poll" fkcolumn="poll_id">
 	
-	<cfproperty name="variantBids" fieldType="one-to-many" cfc="bid" fkcolumn="bid_id" inverse="true">
+	<cfproperty name="bids" fieldType="one-to-many" cfc="bid" fkcolumn="variant_id" inverse="true">
 </cfcomponent>

@@ -18,8 +18,8 @@
 	<cfproperty name="parentPost" fieldtype="many-to-one" cfc="post" fkcolumn="parent_post">
 	<cfproperty name="parentPoll" fieldtype="many-to-one" cfc="poll" fkcolumn="parent_poll">
 	
-	<cfproperty name="ChildPolls" fieldtype="one-to-many" cfc="poll" fkcolumn="parent_poll" inverse="true" >
-	<cfproperty name="childPosts" fieldtype="one-to-many" cfc="post" fkcolumn="parent_post" inverse="true" > 
+	<cfproperty name="childPolls" fieldtype="one-to-many" cfc="poll" fkcolumn="parent_poll" inverse="true" >
+	<cfproperty name="childPosts" fieldtype="one-to-many" cfc="post" fkcolumn="parent_poll" inverse="true" > 
 	<cfproperty name="variants" fieldType="one-to-many" cfc="variant" fkcolumn="poll_id" inverse="true">
 	<cfproperty name="comments" fieldtype="one-to-many" cfc="comment" fkcolumn="poll_id" inverse="true" >
 	

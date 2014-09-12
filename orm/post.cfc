@@ -29,7 +29,7 @@
 	<cfproperty name="parentPost" fieldtype="many-to-one" cfc="post" fkcolumn="parent_post">
 	
 	<cfproperty name="childPosts" fieldtype="one-to-many" cfc="post" fkcolumn="parent_post" inverse="true" >
-	
+	<cfproperty name="childPolls" fieldtype="one-to-many" cfc="poll" fkcolumn="parent_post" inverse="true"> 
 	<cfproperty name="comments" fieldtype="one-to-many" cfc="comment" fkcolumn="post_id" inverse="true">
 	
 	

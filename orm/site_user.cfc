@@ -11,8 +11,9 @@
     <cfproperty name="activationKey" column="activation_key" ormtype="string">
 	<cfproperty name="displayName" column="display_name" ormtype="string">
 	
-	<cfproperty name="Polls" fieldType="one-to-many" cfc="poll" fkcolumn="author" inverse="true">
-	<cfproperty name="Bids" fieldType="one-to-many" cfc="bid" fkcolumn="user_id" inverse="true">
+	<cfproperty name="polls" fieldType="one-to-many" cfc="poll" fkcolumn="author" inverse="true">
+	<cfproperty name="posts" fieldtype="one-to-many" cfc="post" fkcolumn="author" inverse="true">
+	<cfproperty name="bids" fieldType="one-to-many" cfc="bid" fkcolumn="user_id" inverse="true">
 	
 	
 	<!---

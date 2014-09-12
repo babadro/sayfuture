@@ -12,11 +12,14 @@
 	<cfproperty name="agent" column="agent" ormtype="string" >
 	<cfproperty name="type" column="ctype" ormtype="string" >
 	
-	<cfproperty name="parent" fieldtype="many-to-one" cfc="comment" fkcolumn="parent">
-	<cfproperty name="commentChilds" fieldtype="one-to-many" cfc="comment" fkcolumn="parent" inverse="true">
 	
 	<cfproperty name="post" fieldtype="many-to-one" cfc="post" fkcolumn="post_id" >
 	<cfproperty name="poll" fieldtype="many-to-one" cfc="poll" fkcolumn="poll_id">
+	<cfproperty name="parent" fieldtype="many-to-one" cfc="comment" fkcolumn="parent">
+	
+	<cfproperty name="childComments" fieldtype="one-to-many" cfc="comment" fkcolumn="parent" inverse="true">
+	
+	
 	
 	
 </cfcomponent>
