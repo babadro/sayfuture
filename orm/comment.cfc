@@ -15,6 +15,7 @@
 	
 	<cfproperty name="post" fieldtype="many-to-one" cfc="post" fkcolumn="post_id" >
 	<cfproperty name="poll" fieldtype="many-to-one" cfc="poll" fkcolumn="poll_id">
+	<cfproperty name="user" fieldtype="many-to-one" cfc="site_user" fkcolumn="user_id">
 	<cfproperty name="parent" fieldtype="many-to-one" cfc="comment" fkcolumn="parent">
 	
 	<cfproperty name="childComments" fieldtype="one-to-many" cfc="comment" fkcolumn="parent" inverse="true">

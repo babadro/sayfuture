@@ -22,5 +22,5 @@
 	<cfproperty name="childPosts" fieldtype="one-to-many" cfc="post" fkcolumn="parent_poll" inverse="true" > 
 	<cfproperty name="variants" fieldType="one-to-many" cfc="variant" fkcolumn="poll_id" inverse="true">
 	<cfproperty name="comments" fieldtype="one-to-many" cfc="comment" fkcolumn="poll_id" inverse="true" >
-	
+	<cfproperty name="keywords" fieldtype="one-to-many" cfc="keyword" fkcolumn="poll_id" inverse="true" >
 </cfcomponent>

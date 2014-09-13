@@ -4,6 +4,6 @@
 	<cfset THIS.dataSource="sayfuturedb">
 	<cfset this.ormenabled = true>
 	<cfset this.ormsettings.useDBForMapping = "true">
-	<cfset this.ormsettings.cfclocation = ExpandPath( "../ormDBmapping")>
+	<cfset this.ormsettings.cfclocation = ExpandPath( "../orm")>
 	
 </cfcomponent>

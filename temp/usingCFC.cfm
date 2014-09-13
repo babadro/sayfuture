@@ -1,3 +1,3 @@
-<cfset variants = entityLoad("variants")>
-<cfdump var="#variants#">
+<cfset user = entityLoad("site_user")>
+<cfdump var="#user#">
 
