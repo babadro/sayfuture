@@ -1,0 +1,1 @@
+<cfoutput>Правка голосований.</cfoutput>

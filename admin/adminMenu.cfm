@@ -1,5 +1,5 @@
-<cfmenu type="vertical" width="190">
-	<cfmenuitem display="Опросы" href="polls.cfm">
+<cfmenu type="vertical" width="230" menustyle="float:left">
+	<cfmenuitem display="Голосования" href="polls.cfm">
 	</cfmenuitem>
 	
 	<cfmenuitem display="Посты" href="postEdit.cfm">
