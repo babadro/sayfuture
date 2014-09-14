@@ -1,3 +1,5 @@
-<cfset user = entityLoad("site_user")>
-<cfdump var="#user#">
+<cfset tabledb = entityLoad("poll")>
+<cfoutput>#tabledb[2].getDate()#</cfoutput><br>
+<cfoutput>#now()#</cfoutput>
+
 

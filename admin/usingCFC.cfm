@@ -1,2 +1,2 @@
-<cfset variants = entityLoad("variants")>
-<cfdump var="#variants#" >
+<cfset variants = entityLoad("polls")>
+<cfdump var="#polls#" >

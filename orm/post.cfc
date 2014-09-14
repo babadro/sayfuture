@@ -25,6 +25,7 @@
 	
 	
 	<cfproperty name="Author" fieldtype="many-to-one" cfc="site_user" fkcolumn="author">
+	
 	<cfproperty name="parentPoll" fieldtype="many-to-one" cfc="poll" fkcolumn="parent_poll">
 	<cfproperty name="parentPost" fieldtype="many-to-one" cfc="post" fkcolumn="parent_post">
 	
@@ -33,6 +34,6 @@
 	<cfproperty name="comments" fieldtype="one-to-many" cfc="comment" fkcolumn="post_id" inverse="true">
 	<cfproperty name="keywords" fieldtype="one-to-many" cfc="keyword" fkcolumn="post_id" inverse="true" >
 
-	
+	---->
 	
 </cfcomponent>

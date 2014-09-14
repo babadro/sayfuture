@@ -1,9 +1,35 @@
-<cfoutput>Это страница опросов</cfoutput>
+<cfoutput>Это страница голосований</cfoutput>
+<cf_adminMenu>
 <cfset polls = entityLoad("poll")>
+<cfset pollsQuery = querynew("title, author, date, hashTag, deadLine")>
 
+<cfset i = 1>
+<cfloop array="#polls#" index="poll">
+	<cfset queryaddrow(pollsQuery)>
+	<cfset pollAuthor = poll.getAuthor()>
+	<cfset querysetcell(pollsQuery, "title", poll.getTitle(), i )>
+	<cfset querysetcell(pollsQuery, "author", pollAuthor.getDisplayName(), i)>
+	<cfset querysetcell(pollsQuery, "date", dateFormat(poll.getDate()), i)>
+	<cfset querysetcell(pollsQuery, "hashTag", poll.getHashTag(), i)>
+	<cfset querysetcell(pollsQuery, "deadLine", poll.getDeadline(), i)>
+	<cfset ++i>
+</cfloop>
 
-<cfset pollsQuery = querynew("firstname,department, salary,active")>
-<cfset queryaddrow(emps,10)>
-<cfset querysetcell(emps,"firstname","Debra",1)>
-<cfset querysetcell(emps,"department","Accounting",1)>
-
+<cfform name="form01">
+	<cfgrid
+	format="html"
+	insert="yes"
+	insertButton="Add Row"
+	name="grid01"
+	collapsible="true"
+	title="Голосования"
+	autowidth="yes"
+	query="pollsQuery"
+	sort="yes">
+		<cfgridcolumn name="title" header="Заголовок"/>
+		<cfgridcolumn name="author" header="Автор" />
+		<cfgridcolumn name="date" display=true header="Дата" type="date" mask="yy/mm/dd"/>
+		<cfgridcolumn name="hashTag" display=true header="Хеш-тег" />
+		<cfgridcolumn name="deadLine" display=true header="Истекает" type="date" mask="dd/mm/yyyy"/>
+	</cfgrid>
+</cfform>

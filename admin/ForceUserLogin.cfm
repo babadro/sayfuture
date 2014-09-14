@@ -3,7 +3,7 @@
 		<cfinclude template="UserLoginForm.cfm">
 		<cfabort>
 	<cfelse>
-		<cfset user = entityLoad("users", {Login=FORM.userLogin, Pass=hash(FORM.userPassword, "SHA-512")})>
+		<cfset user = entityLoad("site_user", {Login=FORM.userLogin, Pass=hash(FORM.userPassword, "SHA-512")})>
 		
 		
 		<cfif ArrayLen(user) eq 1>
