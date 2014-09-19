@@ -1,0 +1,1 @@
+<cfoutput>Page2</cfoutput>

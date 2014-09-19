@@ -11,7 +11,7 @@
     <cfproperty name="commentStatus" column="comment_status" ormtype="string">
     <cfproperty name="pingStatus" column="ping_status" ormtype="string">
     <cfproperty name="Password" column="p_password" ormtype="string">
-    <cfproperty name="pname" column="pname" ormtype="string" >
+    <cfproperty name="name" column="pname" ormtype="string" >
     <cfproperty name="toPing" column="to_ping" ormtype="text">
     <cfproperty name="pinged" column="pinged" ormtype="text" >
     <cfproperty name="Modified" column="modified"  sqltype="char(19)">
