@@ -7,12 +7,15 @@
 <cf_adminMenu style="float: left">
 
 <cfdump var="#form#" >
+<!---
 <cfif structKeyExists(form, "save")>
 	<cfloop array="variantsGrid.id" index="id" >
 		<cfset variant = entityLoadByPk("variant", id)>
 		<cfset variant>
 	</cfloop>
 </cfif>
+---->
+
 <cfform action="#CGI.script_name#?cfgridkey=#SESSION.poll.getId()#" style="float: left">
 	<p>Заголовок голосования.</p>
 	<cfinput name="pollTitle" size="50" value="#SESSION.poll.getTitle()#" ><br>
@@ -34,6 +37,10 @@
 	<cfinput name="save" type="submit" >
 </cfform>
 
+<cfdump var="#gridrow#">
+<cfdump var="#cfgridaction#">
+<cfdump var="#cfgridchanged#">
+---->
 <!---
 <cfif not isDefined("SESSION.poll")>
 	<cfset SESSION.poll = structNew()>
