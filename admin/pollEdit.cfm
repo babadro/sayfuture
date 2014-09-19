@@ -11,9 +11,10 @@
 <cfform action="#CGI.script_name#?cfgridkey=#SESSION.poll.getId()#" style="float: left">
 	<p>Заголовок голосования.</p>
 	<cfinput name="pollTitle" size="50" value="#SESSION.poll.getTitle()#" ><br>
-	<p>Названия вариантов</p>
+	<p>Варианты</p>
 	<cfloop array="#SESSION.poll.getVariants()#" index="variant">
-		<cfinput name="variantName & #variant.getId()#" size="50" value="#variant.getVariantName()#"><br>
+		<cfinput name="nameVariant_id_#variant.getId()#" size="50" value="#variant.getVariantName()#">
+		<cfinput name="describeVariant_id#variant.getId()#" size="50" value="#variant.getVariantDescribe()#"><br>
 	</cfloop> 
 	<cfinput name="save" type="submit" >
 </cfform>
