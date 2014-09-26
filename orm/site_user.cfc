@@ -5,7 +5,7 @@
     <cfproperty name="Pass" column="pass" ormtype="string">
     <cfproperty name="Nick" column="nick" ormtype="string">
     <cfproperty name="Email" column="email" ormtype="string">
-    <cfproperty name="Registered" column="registered"  sqltype="char(19)">
+    <cfproperty name="Registered" column="registered"  sqltype="datetime">
     <cfproperty name="Status" column="uStatus" ormtype="int">
     <cfproperty name="Rating"column="rating" ormtype="int">
     <cfproperty name="activationKey" column="activation_key" ormtype="string">

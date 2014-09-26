@@ -2,8 +2,8 @@
 
     <cfproperty name="id" column="post_id" fieldType="id" generator="increment" ormtype="int">
     
-    <cfproperty name="date" column="pdate" sqltype="char(19)">
-    <cfproperty name="dateGmt" column="pdate_gmt"  sqltype="char(19)">
+    <cfproperty name="date" column="pdate" sqltype="datetime">
+    <cfproperty name="dateutc" column="pdate_utc"  sqltype="datetime">
     <cfproperty name="content" column="content" ormtype="text">
     <cfproperty name="Title" column="title" ormtype="text">
     <cfproperty name="Excerpt" column="excerpt" ormtype="text">
@@ -14,8 +14,8 @@
     <cfproperty name="name" column="pname" ormtype="string" >
     <cfproperty name="toPing" column="to_ping" ormtype="text">
     <cfproperty name="pinged" column="pinged" ormtype="text" >
-    <cfproperty name="Modified" column="modified"  sqltype="char(19)">
-	<cfproperty name="ModifiedGmt" column="modified_gmt"  sqltype="char(19)">
+    <cfproperty name="Modified" column="modified"  sqltype="datetime">
+	<cfproperty name="Modifiedutc" column="modified_utc"  sqltype="datetime">
 	<cfproperty name="contentFiltered" column="content_filtered" ormtype="text" >
 	<cfproperty name="guid" column="guid" ormtype="string" >
 	<cfproperty name="menuOrder" column="menu_order" ormtype="int">

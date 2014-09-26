@@ -8,20 +8,18 @@
 <cf_adminMenu style="float: left">
 
 <cfdump var="#form#">
+<cfset pollDateUTC = dateFormat(poll.getDate(), "yyyy-mm-ddThh:mm")>
+<cfset pollDeadlineUTC = dateFormat(poll.getDeadLine(), "yyyy-mm-ddThh:mm")>
 
-<cfinclude template="../HTMLfunctions.cfm" >
-	<cfset HTMLpollDate = HTMLdateTimeLocal(#poll.getDate()#)>
-	<cfset HTMLpollDeadline = hTMLdateTimeLocal(#poll.getDeadline()#)>
-	
 
 <cfoutput>
 	<form method="post" style="float:left" action="pollEdit.cfm?cfgridkey=#poll.getId()#">
 		<p>Заголовок голосования.</p>
 		<input name="pollTitle" size="50" value="#poll.getTitle()#" >
 		<p>Начало</p>
-		<input name="dateGMTPoll_id_#poll.getId()#" type="datetime-local" value="#temp.getDate()#" >
+		<input name="dateGMTPoll_id_#poll.getId()#" type="datetime-local" value="#pollDateUTC#" >
 		<p>Конец</p>
-		<input name="deadlinePoll_id_#poll.getId()#" type="datetime-local" value="#poll.getDeadline()#">
+		<input name="deadlinePoll_id_#poll.getId()#" type="datetime-local" value="#pollDeadlineUTC#">
 		<p>Условия</p>
 		<input name="conditionsPoll_id" type="text" value="#poll.getConditions()#">
 		

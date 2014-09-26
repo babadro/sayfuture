@@ -5,7 +5,7 @@
 	<cfproperty name="authorURL" column="author_url" ormtype="string" >
 	<cfproperty name="author_ip" column="author_ip" ormtype="string" >
 	<cfproperty name="date" column="cdate" sqltype="char(19)" >
-	<cfproperty name="dateGMT" column="cdate_gmt" sqltype="char(19)" >
+	<cfproperty name="dateutc" column="cdate_utc" sqltype="char(19)" >
 	<cfproperty name="content" column="content" ormtype="text" >
 	<cfproperty name="karma" column="karma" ormtype="int" >
 	<cfproperty name="approved" column="approved" ormtype="string" >
