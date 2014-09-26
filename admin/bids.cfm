@@ -1,0 +1,1 @@
+<cfoutput>Страница ставок</cfoutput>

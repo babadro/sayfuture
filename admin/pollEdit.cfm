@@ -1,46 +1,43 @@
-<cfif not isDefined("URL.CFGRIDKEY")><cflocation url="polls.cfm" ></cfif>
-
-<cfset SESSION.poll = entityLoadByPk("poll", URL.CFGRIDKEY)>
-
+<!---<cfif not isDefined("URL.CFGRIDKEY")><cflocation url="polls.cfm" ></cfif>
+---->
+<cfset poll = entityLoadByPk("poll", URL.CFGRIDKEY)>
+<cfset temp = entityLoadByPk("temp", 1)>
+<cfdump var="#temp#" >
 <cfoutput>Правка голосований.</cfoutput>
 
 <cf_adminMenu style="float: left">
 
-<cfdump var="#form#" >
-<!---
-<cfif structKeyExists(form, "save")>
-	<cfloop array="variantsGrid.id" index="id" >
-		<cfset variant = entityLoadByPk("variant", id)>
-		<cfset variant>
-	</cfloop>
-</cfif>
----->
+<cfdump var="#form#">
 
-<cfform action="#CGI.script_name#?cfgridkey=#SESSION.poll.getId()#" style="float: left">
-	<p>Заголовок голосования.</p>
-	<cfinput name="pollTitle" size="50" value="#SESSION.poll.getTitle()#" ><br>
-	<p>Варианты</p>
-	<cfgrid format="html" name="variantsGrid" selectmode="edit" >
-		<cfgridcolumn name="id" display="false">
-		<cfgridcolumn name="name">
-		<cfgridcolumn name="describe">
-		<cfloop array="#SESSION.poll.getVariants()#" index="variant">
-			<cfgridrow data="#variant.getId()#, #variant.getVariantName()#, #variant.getVariantDescribe()#" >
-		</cfloop>
-	</cfgrid>
-	<!---	
-	<cfloop array="#SESSION.poll.getVariants()#" index="variant">
-		<cfinput name="nameVariant_id_#variant.getId()#" size="50" value="#variant.getVariantName()#">
-		<cfinput name="describeVariant_id#variant.getId()#" size="50" value="#variant.getVariantDescribe()#"><br>
-	</cfloop> 
-	---->
-	<cfinput name="save" type="submit" >
-</cfform>
+<cfinclude template="../HTMLfunctions.cfm" >
+	<cfset HTMLpollDate = HTMLdateTimeLocal(#poll.getDate()#)>
+	<cfset HTMLpollDeadline = hTMLdateTimeLocal(#poll.getDeadline()#)>
+	
 
-<cfdump var="#gridrow#">
-<cfdump var="#cfgridaction#">
-<cfdump var="#cfgridchanged#">
----->
+<cfoutput>
+	<form method="post" style="float:left" action="pollEdit.cfm?cfgridkey=#poll.getId()#">
+		<p>Заголовок голосования.</p>
+		<input name="pollTitle" size="50" value="#poll.getTitle()#" >
+		<p>Начало</p>
+		<input name="dateGMTPoll_id_#poll.getId()#" type="datetime-local" value="#temp.getDate()#" >
+		<p>Конец</p>
+		<input name="deadlinePoll_id_#poll.getId()#" type="datetime-local" value="#poll.getDeadline()#">
+		<p>Условия</p>
+		<input name="conditionsPoll_id" type="text" value="#poll.getConditions()#">
+		
+		<br>
+		
+		<p>Варианты</p>	
+		<cfloop array="#poll.getVariants()#" index="variant">
+			<input name="nameVariant_id_#variant.getId()#" size="50" value="#variant.getVariantName()#">
+			<input name="describeVariant_id#variant.getId()#" size="50" value="#variant.getVariantDescribe()#">
+			<a href="bids.cfm?variant=#variant.getId#">Ставки</a><br>
+		</cfloop> 
+		
+		<input name="save" type="submit" >
+	</form>
+</cfoutput>
+
 <!---
 <cfif not isDefined("SESSION.poll")>
 	<cfset SESSION.poll = structNew()>
