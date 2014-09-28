@@ -1,8 +1,12 @@
 <!---<cfif not isDefined("URL.CFGRIDKEY")><cflocation url="polls.cfm" ></cfif>
 ---->
 <cfset poll = entityLoadByPk("poll", URL.CFGRIDKEY)>
-<cfset temp = entityLoadByPk("temp", 1)>
-<cfdump var="#temp#" >
+
+<cfset pollStatuses = entityLoad("statuses", {forPolls = "yes"})>
+<cfloop array="#pollStatuses#" index="status" >
+	<cfoutput>#status.getNameRus()#</cfoutput>
+</cfloop>
+
 <cfoutput>Правка голосований.</cfoutput>
 
 <cf_adminMenu style="float: left">
@@ -10,54 +14,83 @@
 <cfdump var="#form#">
 <cfset pollDateUTC = dateFormat(poll.getDate(), "yyyy-mm-ddThh:mm")>
 <cfset pollDeadlineUTC = dateFormat(poll.getDeadLine(), "yyyy-mm-ddThh:mm")>
+<cfif structKeyExists(form, "save")>
+	<cfoutput >
+		#DateFormat(Replace(form.deadline, "T", " "), "yyyy-mm-dd hh:mm:ss")#
+		
+	</cfoutput>
+</cfif>
 
+<cfif structKeyExists(form, "save")>
+	
+    <cfset poll.setTitle(trim(form.title))>
+    <cfset poll.setDateUTC(DateFormat(Replace(trim(form.dateUTC), "T", " "), "yyyy-mm-dd hh:mm:ss"))>
+    <cfset poll.setDeadline(DateFormat(Replace(trim(form.deadline), "T", " "), "yyyy-mm-dd hh:mm:ss"))>
+    <cfset poll.setConditions(trim(form.conditions))>
+    <cfset poll.setHashTag(trim(form.hashTag))>
+    <cfset poll.setCommentStatus(trim(form.commentStatus))>
+    <cfset poll.setStatus(trim(form.status))>
+    <cfset entitySave(poll)>
+    
+    
+	
+</cfif>
 
 <cfoutput>
-	<form method="post" style="float:left" action="pollEdit.cfm?cfgridkey=#poll.getId()#">
+	<form method="post" name="poll" style="float:left" action="#CGI.script_name#?cfgridkey=#poll.getId()#">
 		<p>Заголовок голосования.</p>
-		<input name="pollTitle" size="50" value="#poll.getTitle()#" >
+		<input name="Title" type="text" size="50" value="#poll.getTitle()#" >
 		<p>Начало</p>
 		<input name="dateUTC" type="datetime-local" value="#pollDateUTC#" >
 		<p>Конец</p>
 		<input name="deadline" type="datetime-local" value="#pollDeadlineUTC#">
 		<p>Условия</p>
-		<input name="conditions" type="text" value="#poll.getConditions()#">
+		<textarea name="conditions">#poll.getConditions()#</textarea>
 		<p>Хэш-тег</p>
 		<input name="hashTag" type="text" value="#poll.getHashTag()#">
 		<p>Комментарии</p>
-		<form action="">
-		<select name="cars">
-		<option value="volvo">Volvo</option>
-		<option value="saab">Saab</option>
-		<option value="fiat" selected="selected">Fiat</option>
-		<option value="audi">Audi</option>
+		<select name="commentStatus" >
+			<option value="on" selected="selected">Включены</option>
+			<option value="off">Запрещены</option>
 		</select>
-		</form>
+		<p>Статус голосования</p>
+		<select name="status">
+			<cfloop array="#pollStatuses#" index="status" >
+				<option value="#status.getId()#">#status.getNameRus()#</option>
+			</cfloop>
+		</select>
 		<br>
 		
 		<p>Варианты</p>	
 		<table >
 			<tr>
-				<th>Заголовок</th><th>Описание</th>
+				<th>Заголовок</th><th>Описание</th><th>Ставки</th>
 			</tr>
 		
 		<cfloop array="#poll.getVariants()#" index="variant">
 			<tr>
 				<td>
-					<input name="nameVariant_id_#variant.getId()#" size="50" value="#variant.getVariantName()#">
+					<a href="variantEdit.cfm?variant=#variant.getId()#&cfgridkey=#poll.getId()#">#variant.getTitle()#</a>
 				</td>
 				<td>
-					<input name="describeVariant_id#variant.getId()#" size="50" value="#variant.getVariantDescribe()#">
-					<a href="bids.cfm?variant=#variant.getId#">Ставки</a><br>
+					<a href="variantEdit.cfm?variant=#variant.getId()#&cfgridkey=#poll.getId()#">#variant.getDescribe()#</a>
+				</td>
+				<td>
+					<a href="bids.cfm?variant=#variant.getId()#&cfgridkey=#poll.getId()#">Ставки</a><br>
 				</td>
 			</tr>
 		</cfloop>
 		 
 		</table>
-		<input name="save" type="submit" >
+		<a href="variantEdit.cfm?CFGRIDKEY=#URL.CFGRIDKEY#">Добавить еще один вариант</a><br>
+		<input name="save" type="submit" value="записать" >
 	</form>
 </cfoutput>
 
+<!---
+<cfset variants = poll.getVariants()>
+<cfdump var="#variant#" >
+---->
 <!---
 <cfif not isDefined("SESSION.poll")>
 	<cfset SESSION.poll = structNew()>
