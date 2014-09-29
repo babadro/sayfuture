@@ -37,3 +37,4 @@
 		<cfgridcolumn name="deadLine" display=true header="Истекает" type="date" mask="dd/mm/yyyy"/>
 	</cfgrid>
 </cfform>
+<a href="pollEdit.cfm">Добавить еще один вариант</a><br>
