@@ -1,5 +1,11 @@
 <!---<cfif not isDefined("URL.CFGRIDKEY")><cflocation url="polls.cfm" ></cfif>
 ---->
+<html>
+<head>
+<script type="text/javascript" src="../js/rowTable.js"></script>
+</head>
+<body>
+
 <cfoutput>Правка голосований.</cfoutput>
 <cfdump var="#form#">
 <cf_adminMenu style="float: left">
@@ -59,7 +65,7 @@
 			<br>
 			
 			<p>Варианты</p>	
-			<table >
+			<table id = "variantsTable">
 				<tr>
 					<th>Заголовок</th><th>Описание</th><th>Ставки</th>
 				</tr>
@@ -80,6 +86,8 @@
 			</cfloop>
 			 
 			</table>
+			<input type="button" onclick="insRow('variantsTable')" value="Insert row">
+			<input type="button" onclick="delRow('variantsTable')" value="Delete row"> 
 			<a href="variantEdit.cfm?CFGRIDKEY=#URL.CFGRIDKEY#">Добавить еще один вариант</a><br>
 			<input name="save" type="submit" value="записать" >
 		</form>
@@ -97,3 +105,6 @@
 	<cfset SESSION.poll.hashTag
 </cfif>
 ---->
+
+</body>
+</html>
