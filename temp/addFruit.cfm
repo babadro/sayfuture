@@ -12,7 +12,7 @@
 </script>
 </head>
 <body>
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js"></script>
+<script type="text/javascript" src="../../lib/angular.min.js" ></script>
 <div ng-controller="FruitsController">
 	Enter Your Name : <input type="text" ng-model="name">
 	Select a Fruit :  
