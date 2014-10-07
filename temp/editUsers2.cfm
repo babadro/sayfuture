@@ -4,8 +4,8 @@
 	<cfinclude template="../include/bootstrapMeta.cfm" >
 </head>
 
-<body ng-app="newVariants" ng-controller="variantController">
-
+<body ng-app="myApp" ng-controller="myCtrl">
+{{create}}
 <h3>Варианты</h3>
 
 <form name="variantsTable">
@@ -54,17 +54,19 @@
 <button ng-disabled="false" ng-click="save()">Save Changes</button>
 
 
+{{ title }}<br>
+{{ describe }}
 <cfinclude template="../include/angular.cfm" >
 <script>
-var app = angular.module("newVariants", []);
+var app = angular.module("myApp", []);
 
-app.controller("variantController",
+app.controller("myCtrl", 
 
-	function ($scope) {
-	$scope.title = '';
+	function($scope) {
+	$scope.title = 'df';
 	$scope.describe = '';
 	
-	$scope.varianfts = [];
+	$scope.variants = [];
 	
 	$scope.create = false;
 	$scope.edit = false;
